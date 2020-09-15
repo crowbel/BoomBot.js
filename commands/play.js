@@ -1,4 +1,4 @@
-    moduler.exports = {
+    module.exports = {
 
         name: 'play',
         descripion: "This is a play music command",
