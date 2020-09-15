@@ -49,4 +49,6 @@ client.on('message', message =>{
     }
 });
 
-client.login('NzIwNjMzOTk1NzU4NDAzNjU2.XuI2FA.RWFQLGlL9s09rGQ5s_tNN-Qqi64');
+//NzIwNjMzOTk1NzU4NDAzNjU2.XuI2FA.RWFQLGlL9s09rGQ5s_tNN-Qqi64
+
+client.login(process.env.token);
