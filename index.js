@@ -1,12 +1,6 @@
 const Discord = require('discord.js');
-
-/*
-Use "node ." in terminal to run or run index.js
-Use "Ctrl + c" to turn application off.
- */
-
 const client = new Discord.Client();
-
+const ytdl = require('ytdl-core')
 const prefix = '-';
 
 const fs = require('fs');
@@ -46,6 +40,12 @@ client.on('message', message =>{
 
     } else if (command === 'googleit') {
         client.commands.get('googleit').execute(message, args);
+
+    } else if (command === 'play'){
+        client.commands.get('play').execute(message,args);
+
+    } else if (command === 'stop'){
+        client.commands.get('stop').execute(message,args);
     }
 });
 
