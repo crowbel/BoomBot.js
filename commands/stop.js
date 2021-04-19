@@ -8,5 +8,4 @@ module.exports = {
         message.member.voice.channel.leave()
         return undefined
     }
-
 }
