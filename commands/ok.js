@@ -4,6 +4,9 @@
         execute(message){
             message.react('ok')
                 .then(console.log)
+
+
+
             message.channel.send('Boomer!').then(msg => msg.delete({timeout: 10000}));
         }
 }

@@ -13,8 +13,7 @@
                     "Gotta specify how much you wanna delete, duh...");
 
             message.channel.bulkDelete(args[0]).then(() => {
-                message.channel.send(`Cleared ${args[0]} messages.`)
-                    .then(msg => msg.delete(500));
+                message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete({timeout : 10000}));
             });
         }
     }
