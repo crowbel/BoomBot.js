@@ -13,13 +13,6 @@ module.exports = {
         if(args[0] < 1)
             return message.reply("No point deleting 0 messages is it ?!").then(msg => msg.delete({timeout: 5000}));
 
-
-        /*await message.channel.messages.fetch({limit: args[0]}).then(messages =>{
-            message.channel.bulkDelete(messages);
-        });
-
-         */
-
         await message.channel.bulkDelete(args[0]).then(() => {
             message.channel.send(`Cleared out ${args[0]} messages.`).then(msg => msg.delete({timeout: 5000}));
         });

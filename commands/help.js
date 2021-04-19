@@ -9,7 +9,6 @@
             '-googleit : Allowes you to google up a random picture in a category! ' +
 
             '\n More commands inbound...'
-
         );
     }
 }
