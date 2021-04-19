@@ -6,7 +6,7 @@
             const voiceChannel = message.member.voice.channel
             if (!voiceChannel) return message.channel.send("Really?!!! Can\'t play no music in a textchannel ehh duhh...")
             const permission = voiceChannel.permissionsFor(message.client.user)
-            if (!permissions.has('CONNECT')) return message.channel.send("Yeahh, no can do. I ain\'t got permission to join that channel... ")
+            if (!permissions.has('CONNECT')) return message.channel.send("Yeahh, no can do kiddo. I ain\'t got permission to join that channel... ")
             if (!permissions.has('SPEAK')) return message.channel.send("Im not even allowed to talk in there man...")
 
             try {
