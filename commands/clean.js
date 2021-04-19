@@ -9,7 +9,7 @@
             if(!message.member.hasPermission("MANAGE_MESSAGES"))
                 return message.reply("Oyy, Zoomer! You Gen Z's don't have any rights here!");
             if(!args[0])
-                return message.reply("Not how it works man! \n" +
+                return message.channel.send("Not how it works man! \n" +
                     "Gotta specify how much you wanna delete like so: -clean 10").then(msg => msg.delete({timeout: 10000}));
 
             message.channel.bulkDelete(args[0]).then(() => {
