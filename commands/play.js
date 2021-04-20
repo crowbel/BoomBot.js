@@ -9,14 +9,29 @@ module.exports = {
     async execute(message, args) {
         const voiceChannel = message.member.voice.channel;
 
-        if (!voiceChannel) return message.channel.send("Really?!!! Can\'t play no music in a textchannel ehh duhh...");
-        const permissions = voiceChannel.permissionsFor(message.client.user);
+        if (!voiceChannel) return message.channel.send("Really?!!! Can\'t play no music in a textchannel ehh duhh...")
+        const permissions = voiceChannel.permissionsFor(message.client.user)
         if (!permissions.has('CONNECT')) return message.channel.send("Yeahh, no can do kiddo. I ain\'t got permission to join that channel... ");
         if (!permissions.has('SPEAK')) return message.channel.send("Im not even allowed to talk in there man...");
-        if(!args.length) return message.channel.send('What do you want me to play?');
+        if (!args.length) return message.channel.send('What do you want me to play?');
 
-        const connection = await voiceChannel.join()
 
+        try {
+            var connection = await voiceChannel.join()
+        } catch (error) {
+            console.log('Error! When trying to connect to the voice channel: ${error}')
+            await message.channel.send('I could not connect to the voice channel: ${error}')
+        }
+        const dispatcher = connection.play(ytdl(args[1]))
+            .on('finish', () => {
+                voiceChannel.leave()
+            })
+            .on('error', error => {
+                console.log(error)
+            })
+        dispatcher.setVolumeLogarithmic(5 / 5)
+    }
+        /*
         const videoFinder = async (query) => {
             const videoResult = await ytSearch(query);
 
@@ -36,5 +51,6 @@ module.exports = {
         } else{
             await message.channel.send('No video results found');
         }
-    }
+
+         */
 }
