@@ -18,6 +18,13 @@ client.once('ready', () => {
     console.log('BoomBot is online!');
 });
 
+client.on('guildMemberAdd', member =>{
+    const channel = member.guild.channels.find(channel => channel.name === "bigboychat");
+    if(!channel) return;
+
+    channel.send('Welcome to the server, ${member}!');
+});
+
 client.on('message', message =>{
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
