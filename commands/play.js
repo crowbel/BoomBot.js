@@ -7,6 +7,7 @@ module.exports = {
     descripion: "This is a play music command",
 
     async execute(message, args) {
+        const connection = await voiceChannel.join();
         const voiceChannel = message.member.voice.channel;
 
         if (!voiceChannel) return message.channel.send("Really?!!! Can\'t play no music in a textchannel ehh duhh...")
@@ -15,9 +16,8 @@ module.exports = {
         if (!permissions.has('SPEAK')) return message.channel.send("Im not even allowed to talk in there man...");
         if (!args.length) return message.channel.send('What do you want me to play?');
 
-
+        /*
         try {
-            var connection = await voiceChannel.join()
         } catch (error) {
             console.log('Error! When trying to connect to the voice channel: ${error}')
             await message.channel.send('I could not connect to the voice channel: ${error}')
@@ -30,8 +30,10 @@ module.exports = {
                 console.log(error)
             })
         dispatcher.setVolumeLogarithmic(5 / 5)
-    }
-        /*
+
+         */
+
+
         const videoFinder = async (query) => {
             const videoResult = await ytSearch(query);
 
@@ -40,17 +42,16 @@ module.exports = {
 
         const video = await videoFinder(args.join(' '));
 
-        if(video) {
+        if (video) {
             const stream = ytdl(video.url, {filter: 'audio'});
             connection.play(stream, {seek: 0, volume: 1})
-            .on('finish', () => {
-                voiceChannel.leave();
-            });
+                .on('finish', () => {
+                    voiceChannel.leave();
+                });
 
             await message.reply(`:thumbsup: Now Playing ***${video.title}***`)
-        } else{
+        } else {
             await message.channel.send('No video results found');
         }
-
-         */
+    }
 }
